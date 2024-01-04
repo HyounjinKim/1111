@@ -1,3 +1,5 @@
+package chap03;
+
 class OperatorEx3 {
 	public static void main(String args[]) {
 		int i=5, j=5;

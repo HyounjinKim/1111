@@ -1,0 +1,11 @@
+package ex04;
+
+public class Ex07 {
+	public static void main(String[] args) {
+		String str = "He11oWor1d";
+		
+		System.out.println(str.charAt(2));		
+		
+	}
+
+}

@@ -1,0 +1,25 @@
+package ex02;
+
+import java.util.Scanner;
+
+public class Ex09 {
+	public static void main(String[] args) {
+		
+		int num1 = (int)(Math.random() * 10 + 1);
+		int num2 = (int)(Math.random() * 10 + 1);
+		
+		System.out.println(num1 + " + " + num2);
+		Scanner scan = new Scanner(System.in);
+		System.out.println("정답 : ");
+		int result = scan.nextInt();
+		System.out.println(result);
+		
+		if((num1 + num2) == result) {
+			System.out.println("정답");
+		}
+		else {
+			System.out.println("오답");
+		}
+	}
+
+}

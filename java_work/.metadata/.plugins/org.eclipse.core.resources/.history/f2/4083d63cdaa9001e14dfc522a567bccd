@@ -1,0 +1,17 @@
+package ex03;
+
+import java.util.Scanner;
+
+public class Ex07 {
+	public static void main(String[] args) {
+		char aa = 'A';
+		System.out.println(aa);
+		System.out.println((int)aa);
+		
+		Scanner scan = new Scanner(System.in);
+		String str = scan.next();
+		
+		System.out.println(str);
+	}
+
+}

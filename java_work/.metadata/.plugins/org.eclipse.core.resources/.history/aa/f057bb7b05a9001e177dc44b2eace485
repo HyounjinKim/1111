@@ -1,0 +1,21 @@
+package ex01;
+
+class Data{int a;}
+
+public class ex03 {
+	
+	public static void main(String[] args) {
+		
+		int x = 1;
+		Data a = new Data();
+		aa(x);
+		
+	}
+	
+	static void aa(int a){
+		a = 10;
+		
+		System.out.println(a);
+	}
+
+}

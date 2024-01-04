@@ -1,0 +1,16 @@
+package ex03;
+
+public class ex111 {
+	public static void main(String[] args) {
+		int num1 = 1;
+		int num2 = 3;
+		int den1 = 2;
+		int den2 = 4;
+		int sum = (num1*den2) + (num2*den1);
+		int den = den1 * den2;
+		
+		System.out.println(sum);
+		System.out.println(den);
+	}
+
+}

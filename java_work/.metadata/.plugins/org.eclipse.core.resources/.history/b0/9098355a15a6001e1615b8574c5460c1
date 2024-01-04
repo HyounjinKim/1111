@@ -1,0 +1,12 @@
+package Ex01;
+
+public class ex01 {
+
+	public static void main(String args[]) {
+		int i = 50;
+		
+		System.out.println("안녕하세요 김형진입니다.");
+		System.out.println(i);
+		
+	}
+}

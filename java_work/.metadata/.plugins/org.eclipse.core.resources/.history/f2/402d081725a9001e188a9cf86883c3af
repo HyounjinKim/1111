@@ -1,0 +1,11 @@
+package ex02;
+
+public class Ex09 {
+	public static void main(String[] args) {
+		
+		int num1 = (int)(Math.random() * 10 + 1);
+		
+		System.out.println(num1);
+	}
+
+}

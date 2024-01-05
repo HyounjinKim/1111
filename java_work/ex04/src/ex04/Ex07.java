@@ -9,15 +9,16 @@ public class Ex07 {
 		char[] cs1;
 		char[] cs2;
 		
-		cs1 = str1.toCharArray();
-		cs2 = str2.toCharArray();
+		cs1 = str1.toCharArray(); //10
+		cs2 = str2.toCharArray(); //7
 		
-		for(int i = 0; i < cs1.length; i++) {
-			if(i == s) {
-				//
-			}
-			
+		for(int i = 0; i < cs2.length + 2; i++) {
+			if(i >= s) {
+				cs1[i] = cs2[i - s];	
+			}			
 		}
+		String str = new String(cs1);
+		System.out.println(str);
 		
 	}
 }

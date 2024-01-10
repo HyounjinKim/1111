@@ -8,9 +8,14 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		int A = scan.nextInt();
 		int B = scan.nextInt();
-		int C = scan.nextInt();
 		
-		System.out.println(A + B + C);
+		int h = 24;
+		int m = 60;
 		
+		/*if(m - B <= 0 ) {
+			
+		}*/
+		//System.out.println(A + " " + (m - 45));
+		System.out.println(((B-75) * -1) - m);
 	}
 }

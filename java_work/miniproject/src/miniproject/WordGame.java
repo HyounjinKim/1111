@@ -1,10 +1,12 @@
 package miniproject;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class WordGame {
 
 	public static void Menu() {
+
 		boolean exit = true;
 
 		Scanner sc = new Scanner(System.in);
@@ -22,6 +24,7 @@ public class WordGame {
 				exit = false;
 				break;
 			case "3":
+				GameStart();
 				exit = false;
 				break;
 			case "4":
@@ -38,6 +41,28 @@ public class WordGame {
 				System.out.println("다시 선택해 주세요.");
 				num = sc.nextLine();
 				continue;
+			}
+		}
+	}
+
+	public static void GameStart() {
+
+		System.out.println("게임시작");
+
+		String[] animal = { "개", "고양이", "말" };
+		String[][] animalEx = { { "ㄱ", "ㅐ", "개" }, { "4", "5", "6" }, { "7", "8", "9" } };
+
+		for (int i = 0; i < animal.length; i++) {
+			for (int j = 0; j < animal.length; j++) {
+				if(i == 0) {
+					System.out.println(animalEx[i][j]);
+				}
+				else if(i == 1) {
+					System.out.println(animalEx[i][j]);
+				}
+				else {
+					System.out.println(animalEx[i][j]);
+				}
 			}
 		}
 	}

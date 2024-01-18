@@ -1,9 +1,14 @@
 package miniproject;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class WordGame {
+
+	public static void main(String[] args) {
+
+		Menu();
+
+	}
 
 	public static void Menu() {
 
@@ -54,22 +59,15 @@ public class WordGame {
 
 		for (int i = 0; i < animal.length; i++) {
 			for (int j = 0; j < animal.length; j++) {
-				if(i == 0) {
+				if (i == 0) {
 					System.out.println(animalEx[i][j]);
-				}
-				else if(i == 1) {
+				} else if (i == 1) {
 					System.out.println(animalEx[i][j]);
-				}
-				else {
+				} else {
 					System.out.println(animalEx[i][j]);
 				}
 			}
 		}
 	}
 
-	public static void main(String[] args) {
-
-		Menu();
-		
-	}
 }

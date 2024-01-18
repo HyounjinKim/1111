@@ -12,20 +12,18 @@ public class Main08 {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
+
 		StringTokenizer t;
-		
+
 		int N = Integer.parseInt(br.readLine());
-		
-		for(int i = 0;i < N;i++) {
+
+		for (int i = 0; i < N; i++) {
 			String T = br.readLine();
 			t = new StringTokenizer(T);
-			
-			bw.write(Integer.parseInt(t.nextToken()) + 
-					 Integer.parseInt(t.nextToken()) +
-					 "\n");
-		}		
-		
+
+			bw.write(Integer.parseInt(t.nextToken()) + Integer.parseInt(t.nextToken()) + "\n");
+		}
+
 		bw.flush();
 		bw.close();
 	}

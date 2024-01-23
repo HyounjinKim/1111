@@ -22,7 +22,8 @@ public class DB {
 	public void select() {
 		try {
 			Connection con = DriverManager.getConnection(Info.url, Info.user, Info.pass);
-			PreparedStatement pstmt = con.prepareStatement("select score from (`score`)" + "order by (`score`) desc " + "limit 5");
+			PreparedStatement pstmt = con
+					.prepareStatement("select score from (`score`)" + "order by (`score`) desc " + "limit 5");
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {

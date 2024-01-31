@@ -1,5 +1,6 @@
 package miniproject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -18,8 +19,7 @@ public class Project {
 		Scanner sc = new Scanner(System.in);
 		DB db = new DB();
 		WordGame wg = new WordGame();
-		
-		db.select();
+		User cu = new User();
 
 		System.out.println("  _   _   U _____ u    _         _         U  ___ u \r\n"
 				+ " |'| |'|  \\| ___\"|/   |\"|       |\"|         \\/\"_ \\/ \r\n"
@@ -42,10 +42,7 @@ public class Project {
 			case 1:
 				// 로그인
 				System.out.println(BACKGROUND_WHITE + FONT_GREEN + "         [ LOGIN ]         " + RESET);
-				System.out.println("아이디를 입력해주세요.");
-				String id = sc.next();
-				System.out.println("비밀번호를 입력해주세요.");
-				String pw = sc.next();
+				cu.login();
 
 				// DB에 id가 존재하지 않을 시 "존재하지않는 아이디" 출력
 				// user.setId(id) user.serPw(pw)
@@ -119,7 +116,7 @@ public class Project {
 						int rankCategory = sc.nextInt();
 						switch (rankCategory) {
 						case 1: // 목록조회
-
+							db.rankList();
 						case 9:
 							System.out.println(BACKGROUND_WHITE + FONT_GREEN
 									+ "=================[ 이전메뉴로 돌아갑니다. ]=================" + RESET);
@@ -138,15 +135,43 @@ public class Project {
 						int boardCategory = sc.nextInt();
 						switch (boardCategory) {
 						case 1: // 목록조회
-
+							db.boardList();
 							break;
 						case 2: // 글 등록
-
+							System.out.println("코멘트를 입력해주세요.");
+							String com = sc.next();
+							db.comInsert(com, cu.id);
 							break;
 						case 3: // 글 삭제
+							List<String> comList = new ArrayList<String>();
+							comList = db.myBoardList2(cu.id);
+
+							if (comList.size() > 0) {
+								System.out.println("내가 작성한 글");
+								db.myBoardList1(cu.id);
+								System.out.println("삭제할 글번호를 입력해주세요.");
+								String comNum = sc.next();
+								for (int i = 0; i < comList.size(); i++) {
+									if (comList.get(i).equals(comNum)) {
+										db.myBoardDel(comNum);
+										System.out.println("삭제 완료");
+										break;
+									}
+									else if (!comList.get(i).equals(comNum)){
+										System.out.println("입력하신 글번호가 없습니다.");
+									}
+								}
+								
+							}
+
+							else {
+								System.out.println("작성하신 글이 없습니다.");
+							}
 
 							break;
 						case 8: // 로그아웃
+							cu.id = "";
+							cu.password = "";
 							System.out.println(
 									BACKGROUND_WHITE + FONT_BLUE + "           [ 로그아웃 완료! ]          " + RESET);
 							break mLoop;
@@ -178,33 +203,39 @@ public class Project {
 
 							System.out.println("비밀번호를 입력해주세요.");
 							String pwCheck = sc.next();
+
 							// 현재 유저의 비밀번호와 입력한 비밀번호가 다를 경우 리턴시키기
+							if (pwCheck.equals(cu.password)) {
+								System.out.println("탈퇴 진행을 위해 번호를 입력해주세요.");
+								System.out.println("입력하기 >> [  " + random + "  ]");
+								int randomNumberCheck = sc.nextInt();
 
-							System.out.println("탈퇴 진행을 위해 번호를 입력해주세요.");
-							System.out.println("입력하기 >> [  " + random + "  ]");
-							int randomNumberCheck = sc.nextInt();
+								if (randomNumberCheck != random) {
+									int randomDouble = (int) (Math.random() * 555) + 1;
+									System.out.println("틀렸습니다! 번호를 재입력 해주세요.");
+									System.out.println("입력하기 >> [  " + randomDouble + "  ]");
+									int randomNumberDoubleCheck = sc.nextInt();
 
-							if (randomNumberCheck != random) {
-								int randomDouble = (int) (Math.random() * 555) + 1;
-								System.out.println("틀렸습니다! 번호를 재입력 해주세요.");
-								System.out.println("입력하기 >> [  " + randomDouble + "  ]");
-								int randomNumberDoubleCheck = sc.nextInt();
-
-								if (randomNumberDoubleCheck != randomDouble) {
-									System.out
-											.println(BACKGROUND_BLACK + FONT_RED + "입력값이 올바르지 않습니다. 메뉴로 돌아갑니다" + RESET);
-									break;
+									if (randomNumberDoubleCheck != randomDouble) {
+										System.out.println(
+												BACKGROUND_BLACK + FONT_RED + "입력값이 올바르지 않습니다. 메뉴로 돌아갑니다" + RESET);
+										break;
+									} else {
+										cu.secession();
+										System.out.println(BACKGROUND_WHITE + FONT_GREEN
+												+ "                탈퇴완료! 처음으로 돌아갑니다.                " + RESET);
+										break mLoop;
+									}
+									// 여기에 뭘 넣어야 바로 random 쪽으로 갈까?
 								} else {
+									cu.secession();
 									System.out.println(BACKGROUND_WHITE + FONT_GREEN
 											+ "                탈퇴완료! 처음으로 돌아갑니다.                " + RESET);
 									break mLoop;
 								}
-								// 여기에 뭘 넣어야 바로 random 쪽으로 갈까?
 							} else {
-								// 모든 값이 정상적으로 들어오면 탈퇴 진행 및 대분류 카테고리 이동
-								System.out.println(BACKGROUND_WHITE + FONT_GREEN
-										+ "                탈퇴완료! 처음으로 돌아갑니다.                " + RESET);
-								break mLoop;
+								System.out.println("입력하신 비밀번호와 정보가 일치하지 않습니다.");
+								continue mLoop;
 							}
 						case 2:
 							System.out.println(BACKGROUND_WHITE + FONT_GREEN
@@ -225,7 +256,7 @@ public class Project {
 				}
 				break;
 			case 2: // 회원가입
-
+				cu.createUser();
 				break;
 			default:
 				System.out.println(BACKGROUND_BLACK + FONT_RED + "메뉴 외의 번호를 입력하셨습니다. 다시 입력해주세요!" + RESET);

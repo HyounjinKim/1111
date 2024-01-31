@@ -28,15 +28,11 @@ public class DB {
 	public void select() {
 		try {
 			Connection con = DriverManager.getConnection(Info.url, Info.userid, Info.password);
-			PreparedStatement pstmt = con.prepareStatement("SELECT h.word\r\n" + "     , `SUBJECT`\r\n"
-					+ "     , GROUP_CONCAT(hint SEPARATOR  ',') AS \"hint\"\r\n" + "  FROM word w\r\n"
-					+ "  JOIN word_hint h\r\n" + "    ON h.word = w.word\r\n" + " GROUP BY h.word\r\n"
-					+ " ORDER BY 2 ASC");
+			PreparedStatement pstmt = con.prepareStatement("select * from hint where num=1");
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				System.out.println(rs.getString("hint"));
-//				System.out.println(rs.getString("word"));
 			}
 
 		} catch (Exception e) {
